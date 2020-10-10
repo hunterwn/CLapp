@@ -12,21 +12,24 @@ code {
     monospace;
 }
 
-.sidebar {
-  width: 20%;
-  float:right;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+.side-bar {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid;
+  border-radius: 0;
+  border-color: rgba(64, 194, 133, 0.693);
+  background-color: rgb(255, 255, 255);
+  transition: 0.8s ease;
 }
 
 .requests {
   width: 50%;
-  float:left;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.locations {
+.things {
   width: 50%;
-  float:right;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 

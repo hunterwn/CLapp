@@ -3,7 +3,7 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 
-  function Sidebar({ items, depthStep, depth }) {
+  function Sidebar({items, dropdown}) {
     return (
       <div className="sidebar">
         <ProSidebar>
@@ -18,7 +18,6 @@ import 'react-pro-sidebar/dist/css/styles.css';
       </div>
     )
   }
-  
   
   
 
