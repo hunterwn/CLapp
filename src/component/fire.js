@@ -25,4 +25,5 @@ var config = {
 };
 
 var fire = firebase.initializeApp(config);
+export var database = firebase.database();
 export default fire;

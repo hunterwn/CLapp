@@ -1,17 +1,18 @@
 import React, {Component} from 'react'
 import EventCalendar from './EventCalendar';
 import Sidebar from './Sidebar'
-import fire from './fire.js'
-import { setRef } from '@material-ui/core';
+import fire, {database} from './fire'
+
+
+
+const detailRef = database.reference('/details/{detailId}');
+detailRef.on('value', function(snapshot) {
+  var detailId = snapshot.key;
+  console.log(detailId)
+})
+
 
 export default class CLapp extends Component {
-
-    componentDidMount() {
-      let detailsRef = fire.database().ref('details').orderByKey();
-      detailsRef.on('child_added', snapshot => {
-        console.log(snapshot.key);
-      })
-    }
 
 
     render() {
