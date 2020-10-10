@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import FullCalendar, { CalendarApi } from '@fullcalendar/react'
+import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import fire, {database} from './fire'
@@ -12,11 +12,11 @@ function constructEvent(id, title, start) {
 }
 
 
-
 class EventCalendar extends Component{
-    
+
+    calendarRef = React.createRef();
+
     getEvents() {
-        var calendarEl = document.getElementById('calendar');
         var events = [];
         var detailsRef = database.ref("details/qw7xVHh/").on('value', function(snapshot) {
             var id = snapshot.val().id
@@ -25,30 +25,29 @@ class EventCalendar extends Component{
             events.push(new constructEvent(id, title, start));
             console.log(events);
         });
-        calendarEl.render();
+        
         return events
     }
 
-    componentDidMount() {
-        this.setState({foo: "works"});
-      }
-
     render() {
-        
-        
         return(
             <div className = "calendar">
                 <FullCalendar
                     ref={this.calendarRef}
                     plugins={[  dayGridPlugin  ]}
                     initialView="dayGridMonth"
-                    events={this.getEvents()}
+                    events={this.getEvents.bind(this)}
                 />
             </div>
         )
         
     }
+
+    componentDidMount() {
+        let calendarApi = this.calendarRef.current.getApi()
+    }
 }
+
 
 
 export default EventCalendar;
