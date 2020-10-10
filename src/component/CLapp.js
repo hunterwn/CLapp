@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import EventCalendar from './EventCalendar';
 import Sidebar from './Sidebar'
-import fire, {database} from './fire'
+import {database} from './fire'
 
 
 
-var usersRef = database.ref("users").on('value', function(snapshot) {
+database.ref("users").on('value', function(snapshot) {
   console.log(snapshot.val())
 });
 
