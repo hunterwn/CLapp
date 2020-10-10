@@ -5,15 +5,15 @@ import fire, {database} from './fire'
 
 
 
-const detailRef = database.reference('/details/{detailId}');
-detailRef.on('value', function(snapshot) {
-  var detailId = snapshot.key;
-  console.log(detailId)
-})
+var usersRef = database.ref("users").on('value', function(snapshot) {
+  console.log(snapshot.val())
+});
+
 
 
 export default class CLapp extends Component {
 
+    
 
     render() {
         var views = ["Calendar", "Login"];
