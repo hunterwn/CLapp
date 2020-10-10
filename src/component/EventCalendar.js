@@ -1,51 +1,75 @@
-import React, {Component} from 'react'
+import React, {useEffect, useState} from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import { INITIAL_EVENTS, createEventId } from './event-utils'
-import fire, {database} from './fire'
+import {database} from './fire'
 
 
 function constructEvent(id, title, start) {
-    this.id = id;
-    this.title = title;
-    this.start = start;
+    return {
+        id: id,
+        title: title,
+        start: start
+    }
 }
 
 
-class EventCalendar extends Component{
+function EventCalendar(props) {
 
-    calendarRef = React.createRef();
+    let calendarRef = React.createRef();
+    const dateStr = new Date().toISOString().substr(0,10);
 
-    getEvents() {
+    const [events, setEvents] = useState([
+        {
+        id: 1,
+        title: "KnightHacks",
+        start: dateStr
+        }
+    ])
+
+    /*function getEvents() {
         var events = [];
-        var detailsRef = database.ref("details/qw7xVHh/").on('value', function(snapshot) {
+        database.ref("details/qw7xVHh/").on('value', function(snapshot) {
             var id = snapshot.val().id
             var title = snapshot.val().title
             var start = snapshot.val().start
-            events.push(new constructEvent(id, title, start));
+            events.push(constructEvent(id, title, start));
             console.log(events);
         });
         
-        return events
-    }
+        setEvents(events);
+    }*/
 
-    render() {
-        return(
-            <div className = "calendar">
-                <FullCalendar
-                    ref={this.calendarRef}
-                    plugins={[  dayGridPlugin  ]}
-                    initialView="dayGridMonth"
-                    events={this.getEvents.bind(this)}
-                />
-            </div>
-        )
-        
-    }
+    useEffect(() => {
+        console.log("Side effect has been triggered")
+        let dbref = database.ref("details/qw7xVHh/")
+        function onValueChange(snapshot) {
+            var id = snapshot.val().id
+            var title = snapshot.val().title
+            var start = snapshot.val().start
+            let newEvent = constructEvent(id, title, start)
+            console.log(newEvent)
+            setEvents([newEvent]);
+        }
+        dbref.on('value', onValueChange);
+        return () => database.ref("details/qw7xVHh/").off('value', onValueChange)
+    }, []);
 
-    componentDidMount() {
-        let calendarApi = this.calendarRef.current.getApi()
-    }
+    return(
+        <div className = "calendar">
+            <FullCalendar
+                ref={calendarRef}
+                plugins={[  dayGridPlugin  ]}
+                initialView="dayGridMonth"
+                events={/*[{
+                    id: 1,
+                    title: "KnightHacks",
+                    start: new Date().toISOString().substr(0,10)
+                }]*/
+                    events
+                }
+            />
+        </div>
+    )
 }
 
 
