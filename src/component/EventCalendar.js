@@ -13,9 +13,8 @@ function constructEvent(id, title, start) {
 }
 
 
-function EventCalendar(props) {
+function EventCalendar() {
 
-    let calendarRef = React.createRef();
     const dateStr = new Date().toISOString().substr(0,10);
 
     const [events, setEvents] = useState([
@@ -26,41 +25,33 @@ function EventCalendar(props) {
         }
     ])
 
-    /*function getEvents() {
-        var events = [];
-        database.ref("details/qw7xVHh/").on('value', function(snapshot) {
-            var id = snapshot.val().id
-            var title = snapshot.val().title
-            var start = snapshot.val().start
-            events.push(constructEvent(id, title, start));
-            console.log(events);
-        });
-        
-        setEvents(events);
-    }*/
-
     useEffect(() => {
         console.log("Side effect has been triggered")
-        let dbref = database.ref("details/qw7xVHh/")
+        let dbref = database.ref("details/")
         function onValueChange(snapshot) {
-            return;
-            var id = snapshot.val().id
-            var title = snapshot.val().title
-            var start = snapshot.val().start
-            let newEvent = constructEvent(id, title, start)
-            console.log(newEvent)
-            setEvents([newEvent]);
+            const newArr = []
+            var x = snapshot.val()
+            for(var i in x) {
+                let newEvent = constructEvent(x[i].id,x[i].title,x[i].start)
+                newArr.push(newEvent)             
+            }
+            setEvents(events.concat(newArr));
         }
         dbref.on('value', onValueChange);
-        return () => database.ref("details/qw7xVHh/").off('value', onValueChange)
+        return () => database.ref("details/").off('value', onValueChange)
     }, []);
 
     return(
         <div className = "calendar">
             <FullCalendar
-                ref={calendarRef}
+                defaultView="dayGridMonth"
+                theme={"darkly"}
+                headerToolbar={{
+                    left: "prev",
+                    center: "title",
+                    right: "next"
+                  }}
                 plugins={[  dayGridPlugin  ]}
-                initialView="dayGridMonth"
                 events={/*[{
                     id: 1,
                     title: "KnightHacks",
