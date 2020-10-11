@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< Updated upstream
+=======
+import 'bootstrap/dist/css/bootstrap.min.css';
+>>>>>>> Stashed changes
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import CLapp from './component/CLapp';
