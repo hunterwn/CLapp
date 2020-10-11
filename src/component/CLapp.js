@@ -20,7 +20,7 @@ export default class CLapp extends Component {
         "Dave <---> Holden", "You <-----> David"];
         var commons = ["Rec Room","Laundry Room","N Breezeway"
         ,"S Breezeway","N Lobbies","S Lobbies","N Halls","S Halls"];
-        var bathroom = ["Mens","Womens","Master","Guest 1","Guest 2"];
+        var bathroom = ["NW1","NW2","NE1","NE2","SE1", "SE2", "SW1", "SW2"];
 
         return( 
           <div className='app-main'>
@@ -44,10 +44,10 @@ export default class CLapp extends Component {
                 </Col>
                 <Col>
                   <Row><Col>
-                    <Dropdown title="Commons"list={commons}n={8}/>
+                    <Dropdown title="Commons" list={commons} n={commons.length}/>
                   </Col></Row>
                   <Row><Col>
-                    <Dropdown title="Bathroom"list={bathroom}n={5}/>
+                    <Dropdown title="Bathroom" list={bathroom} n={bathroom.length}/>
                   </Col></Row>
                 </Col>
               </Row>
