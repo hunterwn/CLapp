@@ -26,19 +26,6 @@ function EventCalendar(props) {
         }
     ])
 
-    /*function getEvents() {
-        var events = [];
-        database.ref("details/qw7xVHh/").on('value', function(snapshot) {
-            var id = snapshot.val().id
-            var title = snapshot.val().title
-            var start = snapshot.val().start
-            events.push(constructEvent(id, title, start));
-            console.log(events);
-        });
-        
-        setEvents(events);
-    }*/
-
     useEffect(() => {
         console.log("Side effect has been triggered")
         let dbref = database.ref("details/")
@@ -49,8 +36,6 @@ function EventCalendar(props) {
                 let newEvent = constructEvent(x[i].id,x[i].title,x[i].start)
                 newArr.push(newEvent)             
             }
-            //let newEvent = constructEvent(id, title, start)
-            //console.log(events.concat(newEvent))
             setEvents(events.concat(newArr));
         }
         dbref.on('value', onValueChange);
