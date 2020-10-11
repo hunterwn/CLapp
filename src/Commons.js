@@ -9,22 +9,21 @@ export default  function Commons() {
       
         return (
             <>
-               <Button
-              onClick={() => setOpen(!open)}
-              aria-controls="example-collapse-text"
-              aria-expanded={open}
+                <Button
+                    onClick={() => setOpen(!open)}
+                    aria-controls="example-collapse-text"
+                    aria-expanded={open}
                 >
                     Commons
                 </Button>
                 <Collapse in={open}>
-                     <div id="example-collapse-text">
-                     <InputGroup className="mb-3">
+                    <div>
+                    <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                         <InputGroup.Checkbox aria-label="Checkbox for following text input" />
                         Rec Room
                         </InputGroup.Prepend>
                     </InputGroup>
-
                     
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
@@ -74,9 +73,9 @@ export default  function Commons() {
                         S Halls
                         </InputGroup.Prepend>
                     </InputGroup>
-                     </div>
+                    </div>
                 </Collapse>
-             </>
+            </>
         );
       }
       

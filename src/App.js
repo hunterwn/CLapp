@@ -1,20 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import EventCalendar from './component/EventCalendar'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Col from 'react-bootstrap/Col'
 import Row  from 'react-bootstrap/Row';
 import Commons from './Commons'
 import Bathroom from './Bathroom'
 import FormControl from 'react-bootstrap/FormControl'
-
-const EVENT = {
-  id:1,
-  title:"My Birthday",
-  start: "2020-10-09",
-}
 
 
 function App() {
@@ -23,13 +16,7 @@ function App() {
 
   <Row>
     <Col>
-
-          <FullCalendar
-            plugins={[ dayGridPlugin ]}
-            initialView="dayGridMonth"
-            initialEvents={[EVENT]}
-          ></FullCalendar>
-        
+          <EventCalendar/> 
     </Col>
 
     <Col md="2">

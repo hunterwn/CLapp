@@ -8,73 +8,72 @@ export default  function Bathroom() {
   
     return (
         <>
-           <Button
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
+            <Button
+                onClick={() => setOpen(!open)}
+                aria-controls="example-collapse-text"
+                aria-expanded={open}
             >
                 Bathroom
             </Button>
             <Collapse in={open}>
-                 <div id="example-collapse-text">
-                 <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                    <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    1
-                    </InputGroup.Prepend>
-                </InputGroup>
-
-                
+                <div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    2
+                    NorthEast 1
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    3
+                    NorthEast 2
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    4
+                    NorthWest 1
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    5
+                    NorthWest 2
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    6
+                    SouthEast 1
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    7
+                    SouthEast 2
                     </InputGroup.Prepend>
                 </InputGroup>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                     <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                    8
+                    SouthWest 1
                     </InputGroup.Prepend>
                 </InputGroup>
-                 </div>
+
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                    <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                    SouthWest 2
+                    </InputGroup.Prepend>
+                </InputGroup>
+                </div>
             </Collapse>
-         </>
+        </>
     );
   }

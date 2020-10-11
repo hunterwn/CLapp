@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import CLapp from './component/CLapp';
+import App from './App.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CLapp/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

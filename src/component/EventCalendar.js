@@ -43,6 +43,7 @@ function EventCalendar(props) {
         console.log("Side effect has been triggered")
         let dbref = database.ref("details/qw7xVHh/")
         function onValueChange(snapshot) {
+            return;
             var id = snapshot.val().id
             var title = snapshot.val().title
             var start = snapshot.val().start
