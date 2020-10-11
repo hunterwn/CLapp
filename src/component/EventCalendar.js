@@ -41,17 +41,20 @@ function EventCalendar(props) {
 
     useEffect(() => {
         console.log("Side effect has been triggered")
-        let dbref = database.ref("details/qw7xVHh/")
+        let dbref = database.ref("details/")
         function onValueChange(snapshot) {
-            var id = snapshot.val().id
-            var title = snapshot.val().title
-            var start = snapshot.val().start
-            let newEvent = constructEvent(id, title, start)
-            console.log(newEvent)
-            setEvents([newEvent]);
+            const newArr = []
+            var x = snapshot.val()
+            for(var i in x) {
+                let newEvent = constructEvent(x[i].id,x[i].title,x[i].start)
+                newArr.push(newEvent)             
+            }
+            //let newEvent = constructEvent(id, title, start)
+            //console.log(events.concat(newEvent))
+            setEvents(events.concat(newArr));
         }
         dbref.on('value', onValueChange);
-        return () => database.ref("details/qw7xVHh/").off('value', onValueChange)
+        return () => database.ref("details/").off('value', onValueChange)
     }, []);
 
     return(
