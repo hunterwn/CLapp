@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import CLapp from './component/CLapp';
+import App from './component/CLapp.js';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <CLapp/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

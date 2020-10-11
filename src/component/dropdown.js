@@ -61,7 +61,9 @@ export default  function Dropdown({title, list, n}) {
             )
         } else {
             items.push(
+
                 <InputGroup.Append>
+                    <InputGroup.Checkbox></InputGroup.Checkbox>
                     <Button variant="outline-secondary" block>
                         {list[i]}
                     </Button>
