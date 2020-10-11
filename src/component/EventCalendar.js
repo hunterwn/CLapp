@@ -13,9 +13,8 @@ function constructEvent(id, title, start) {
 }
 
 
-function EventCalendar(props) {
+function EventCalendar() {
 
-    let calendarRef = React.createRef();
     const dateStr = new Date().toISOString().substr(0,10);
 
     const [events, setEvents] = useState([
@@ -45,9 +44,14 @@ function EventCalendar(props) {
     return(
         <div className = "calendar">
             <FullCalendar
-                ref={calendarRef}
+                defaultView="dayGridMonth"
+                theme={"darkly"}
+                headerToolbar={{
+                    left: "prev",
+                    center: "title",
+                    right: "next"
+                  }}
                 plugins={[  dayGridPlugin  ]}
-                initialView="dayGridMonth"
                 events={/*[{
                     id: 1,
                     title: "KnightHacks",

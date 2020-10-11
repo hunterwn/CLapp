@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import EventCalendar from './EventCalendar';
-import Sidebar from './Sidebar'
 import {database} from './fire'
 import Dropdown from './dropdown'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 
 database.ref("users").on('value', function(snapshot) {
   console.log(snapshot.val())
@@ -12,6 +11,7 @@ database.ref("users").on('value', function(snapshot) {
 
 
 export default class CLapp extends Component {
+  
     render() {
         var requests = ["Sam <-----> You","David <---> Anyone"];
         var pending = ["Hunter <-----> Phoebe",
@@ -24,8 +24,12 @@ export default class CLapp extends Component {
 
         return( 
           <div className='app-main'>
-              <Row className="justify-content-md-left">
-                <Col sm={0.5}><Dropdown /></Col>
+              <div className="topBar"><h1 className="title">CLapp</h1></div>
+              <Row>
+              <div className="sideBar">
+                  <div className = 'buffer'></div>
+                  <Button>+</Button>
+                </div>
                 <Col sm={8}><EventCalendar/></Col>
                 <Col>
                   <Row><Col>
